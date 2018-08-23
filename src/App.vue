@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <form @submit.prevent="addNewTodo">
+    <form @submit.prevent="postNewTodo">
       <input type="text" placeholder="New TODO" v-model="newTodo">
     </form>
     <ul>
@@ -31,12 +31,18 @@ export default {
    ...mapActions([
      'addTodo',
      'removeTodo',
-     'fetchTodos'
+     'fetchTodos',
+     'postTodo'
    ]),
    addNewTodo: function()
    {
       this.addTodo(this.newTodo);
       this.newTodo = '';
+   },
+   postNewTodo: function()
+   {
+     this.postTodo(this.newTodo);
+     this.newTodo= '';
    },
    removeExistedTodo: function(todo)
    {

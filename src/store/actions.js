@@ -28,7 +28,13 @@ export const actions = {
         }).catch(error =>{
             console.error(error);
         })
-        
+    },
+    postTodo: (context, todoP) =>
+    {
+        axios.post("URL", {
+            todos: todoP,
+            completed: false
+        })
     }
     
 }
