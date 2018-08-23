@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="todosContainer">
-      <form @submit.prevent="postNewTodo">
+      <form @submit.prevent="addNewTodo">
         <input type="text" placeholder="New TODO" v-model="newTodo">
       </form>
       <div class="two column stackable ui grid">
@@ -52,12 +52,12 @@ export default {
    ]),
    addNewTodo: function()
    {
-      this.addTodo(this.newTodo);
+      this.addTodo(this.newTodo); //addTodo is posting the TODO to state(local)
       this.newTodo = '';
    },
    postNewTodo: function()
    {
-     this.postTodo(this.newTodo);
+     this.postTodo(this.newTodo);  //addTodo is posting the TODO to state(API)
      this.newTodo= '';
    },
    removeExistedTodo: function(todo)

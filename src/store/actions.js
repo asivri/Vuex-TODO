@@ -48,7 +48,12 @@ export const actions = {
         axios.post("http://jsonplaceholder.typicode.com/todos", {
             title: todoP,
             completed: false
+        }).then(function(response){
+            console.log(response.data);
+        }).catch(function(error){
+            console.error(error);
         })
+        
     }
     
 }
