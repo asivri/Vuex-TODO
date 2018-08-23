@@ -30,7 +30,8 @@ export default {
   methods: {
    ...mapActions([
      'addTodo',
-     'removeTodo'
+     'removeTodo',
+     'fetchTodos'
    ]),
    addNewTodo: function()
    {
@@ -40,7 +41,14 @@ export default {
    removeExistedTodo: function(todo)
    {
       this.removeTodo(todo);
+   },
+   callTodos: function() //Implemented to call fetchTodos at mounted(in the creation).
+   {
+     this.fetchTodos();
    }
+  },
+  mounted(){
+    this.callTodos();
   }
 }
 </script>

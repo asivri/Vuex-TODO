@@ -12,5 +12,9 @@ export const mutations = {
     REMOVE_TODO: (state, todo) =>
     {
         state.todos.splice(todo, 1)
+    },
+    FETCH_TODO: (state, tObj) =>
+    {
+        state.todos.push(tObj);
     }
 }
