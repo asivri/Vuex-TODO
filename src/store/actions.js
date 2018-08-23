@@ -22,13 +22,22 @@ export const actions = {
     //--Below this part of the code communicates with an API to reach for TODOs--
     fetchTodos: (context) =>
     {
-        axios.get("http://jsonplaceholder.typicode.com/todos")
+        axios.get("http://jsonplaceholder.typicode.com/todos") //http://jsonplaceholder.typicode.com/ Fake REST API used 
         .then(response =>{
-            console.log(response.data);
             var manipulated = new DataCollection(response.data);
-            var names = manipulated.query().distinct('title'); // todos is a unique element in the json response. 
-            names.forEach(element =>{
+
+            var active = manipulated.query() //Render data, filter and return the title of active TODOs
+            .filter({completed: false})
+            .distinct('title'); 
+            var inactive = manipulated.query() //Render data, filter and return the title of finished TODOs
+            .filter({completed: true})
+            .distinct('title'); 
+
+            active.forEach(element =>{
                 context.commit("FETCH_TODO", element)
+            })
+            inactive.forEach(element =>{
+                context.commit("FETCH_INACTIVE_TODO", element)
             })
         }).catch(error =>{
             console.error(error);
@@ -36,8 +45,8 @@ export const actions = {
     },
     postTodo: (context, todoP) =>
     {
-        axios.post("http://localhost:64516/api/Todos", {
-            todos: todoP,
+        axios.post("http://jsonplaceholder.typicode.com/todos", {
+            title: todoP,
             completed: false
         })
     }

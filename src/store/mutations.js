@@ -16,5 +16,9 @@ export const mutations = {
     FETCH_TODO: (state, tObj) =>
     {
         state.todos.push(tObj);
+    },
+    FETCH_INACTIVE_TODO: (state, tObj) =>
+    {
+        state.inactiveTodos.push(tObj);
     }
 }
