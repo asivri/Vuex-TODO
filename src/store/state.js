@@ -5,5 +5,6 @@ Vue.use(Vuex);
 export const state = {
     todos: [],
     inactiveTodos: [],
-    newTodo: ''
+    newTodo: '',
+    userID: ''
 }

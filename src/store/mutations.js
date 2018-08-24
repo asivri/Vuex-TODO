@@ -20,5 +20,9 @@ export const mutations = {
     FETCH_INACTIVE_TODO: (state, tObj) =>
     {
         state.inactiveTodos.push(tObj);
+    },
+    FETCH_USER: (state, uid) =>
+    {
+        state.userID = uid;
     }
 }
